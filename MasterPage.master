@@ -1,0 +1,174 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300|Roboto:300&display=swap" rel="stylesheet">
+    <title></title>
+
+
+    <style>
+        .bry:hover {
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .menu li:hover {
+            background: #0d0f00;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .asd:hover {
+            font-size: 30px;
+            transition: 0.3s;
+        }
+    </style>
+
+
+</head>
+<body style="font-family: 'Roboto', sans-serif;">
+    <form runat="server">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark" style="opacity: 0.97;">
+            <div class="container-fluid">
+                <a href="Default.aspx" class="navbar-brand">
+                    <img width="150" src="img/logo.PNG"></a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#no1">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse text-center" id="no1">
+
+                    
+                    <ul class="menu navbar-nav ml-auto">
+                        <li class="nav-item active"><a href="Default.aspx" class="nav-link text-white"><i class="fas fa-home mr-1"></i>Anasayfa</a></li>
+                        <asp:Panel ID="Panel3" runat="server">
+                            <li class="nav-item active"><a href="siparislerim.aspx" class="nav-link text-white"><i class="fas fa-shopping-basket mr-1"></i>Siparişlerim</a></li>
+                        </asp:Panel>
+                        <li class="nav-item active"><a href="iletisim.aspx" class="nav-link text-white"><i class="fas fa-headset mr-1"></i>Destek</a></li>
+                        <asp:LinkButton ID="giriskayit" href="uyeolma.aspx" class="nav-link text-white" runat="server"><i class="fas fa-users mr-1"></i>Üye Ol | Giriş Yap</asp:LinkButton>
+                        <asp:Button ID="Button2" runat="server" class="btn btn-dark" Text="Çıkış Yap" OnClick="Button2_Click" />
+
+
+                    </ul>
+
+                </div>
+            </div>
+
+        </nav>
+
+        <br />
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="card my-4">
+                        <div class="card-header text-center bg-dark text-warning">
+                            <h5><strong>Kategoriler</strong></h5>
+                        </div>
+                        <div class="card-body bg-dark" align="center">
+
+                            <asp:DataList ID="DataList1" runat="server">
+                                <ItemTemplate>
+
+
+                                    <a class="bg-dark text-warning" href="kategoridetay.aspx?kategoriid=<%#Eval("kategoriid")%>">
+                                        <asp:Label ID="Label1" runat="server" Text='<%# Eval("kategoriad") %>'></asp:Label>
+
+                                    </a>
+
+
+
+
+
+
+                                </ItemTemplate>
+                            </asp:DataList>
+
+                        </div>
+                    </div>
+                    <!-- GİRİŞ YAP GİRİŞ YAP GİRİŞ YAP GİRİŞ YAP GİRİŞ YAP -->
+                    <asp:Panel ID="Panel1" runat="server">
+                        <div class="card">
+                            <div class="card-header bg-dark">
+                                <h5 class=" text-center text-warning"><strong>Giriş Yap</strong></h5>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputText1">
+                                    Kullanıcı adı:</label>
+                                <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" placeholder="Kullanıcı adınız"></asp:TextBox>
+                                <label for="exampleInputPassword1">
+                                    Şifreniz:</label>
+                                <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control" placeholder="Şifreniz" TextMode="Password"></asp:TextBox>
+                            </div>
+                            <asp:CheckBox ID="CheckBox1" runat="server" class="form-check text-dark" Text="Beni Unutma" />
+                            <asp:Button ID="Button1" runat="server" CssClass="btn btn-dark " OnClick="Button1_Click1" Text="Giriş" />
+                            <br />
+                            <asp:Button ID="Button3" CssClass="btn btn-sm text-dark" runat="server" OnClick="Button3_Click" Text="Beni Unut" />
+
+
+                            <small><a class="text-dark" href="sifreguncelleme.aspx">Şifreni mi unuttun ?</a></small>
+                            <small><a class="text-dark" href="uyeolma.aspx">Hesabınız mı yok ? Kayıt Ol !</a></small>
+                        </div>
+                    </asp:Panel>
+                    <asp:Panel ID="Panel2" runat="server">
+                        <div class="card">
+                            <div class="card-text">
+                                Hoşgeldiniz
+                                <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                                <br />
+                                <a href="guncelle.aspx">Hesap Bilgilerim</a>
+                            </div>
+                        </div>
+                    </asp:Panel>
+
+
+                </div>
+
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                
+                    
+                
+
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <asp:ContentPlaceHolder ID="head" runat="server">
+        </asp:ContentPlaceHolder>
+        <footer class="bg-dark">
+            <div class="container py-5" align="center">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="img/logo.PNG" width="180" />
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="list-unstyled">
+                            <li><a class="asd text-warning" style="font-size: 25px;" href="#"><i class="asd fab fa-instagram mr-2"></i></a></li>
+                            <li><a class="asd text-warning" style="font-size: 25px;" href="#"><i class="asd fab fa-facebook mr-2"></i></a></li>
+                            <li><a class="asd text-warning" style="font-size: 25px;" href="#"><i class="asd fab fa-twitter mr-2"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="text-white">Sorun mu Yaşadınız ? İletişim Bölümünden mesajınızı bırakabilirsiniz !</p>
+                        <a href="iletisim.aspx" class="bry btn btn-warning">İletişim
+                        </a>
+                    </div>
+
+                </div>
+                <p class="text-muted" style="position: absolute;">@Süleyman Bayazit 2020</p>
+            </div>
+
+        </footer>
+    </form>
+    <div>
+    </div>
+    <script src="js/jquery-3.4.1.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+</html>
